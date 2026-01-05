@@ -3,10 +3,11 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import CustomHeader from "@/components/CustomHeader";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -50,9 +51,15 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack
+            screenOptions={{
+                header:()=><CustomHeader/>,
+            }}
+        >
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+            {/*<Stack.Screen name="(tabs)/index" options={{ headerShown: false }} />*/}
+            {/*<Stack.Screen name="(home)" options={{ headerShown: false }} />*/}
+            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
     </ThemeProvider>
   );
