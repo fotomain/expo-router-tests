@@ -8,6 +8,10 @@ expo start --web
 taskkill /f /im node.exe
 npm cache clean --force
 
+# ████████████ start Drawer
+
+npx expo install @react-navigation/drawer react-native-reanimated react-native-worklets
+
 # ████████████ error
 
 react-native-vision-camera error useCameraDevice("back" get constants of null
