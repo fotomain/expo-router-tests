@@ -9,8 +9,6 @@ export default function UploadToGoogleDriveLayout() {
             </Stack.Protected>
             <Stack.Screen name="notalloved"/>
         </Stack>
-
-
     )
 }
 
