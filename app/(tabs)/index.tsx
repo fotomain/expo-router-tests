@@ -3,7 +3,7 @@ import {Button, StyleSheet} from 'react-native';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import {Text, View} from '@/components/Themed';
 import {Link} from "expo-router";
-import {CREATE_MEDIA_POST2} from "@/constants/routes";
+import {CREATE_MEDIA_POST} from "@/constants/routes";
 
 
 export default function TabOneScreen() {
@@ -12,8 +12,9 @@ export default function TabOneScreen() {
             <Text style={styles.title}>Tab One</Text>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
             <EditScreenInfo path="app/(tabs)/index.tsx"/>
-            <Link href={CREATE_MEDIA_POST2} push asChild>
-                <Button title={"create/mediapost"}/>
+            <Link href={CREATE_MEDIA_POST} push asChild>
+                <Button title={"CREATE_MEDIA_POST 100"}/>
+
             </Link>
 
 

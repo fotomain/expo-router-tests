@@ -3,7 +3,7 @@ import {Button, StyleSheet} from 'react-native';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import {Text, View} from '@/components/Themed';
 import {Link, useNavigation, useRouter} from "expo-router";
-import {CREATE_MEDIA_POST2, EDIT_MEDIA_POST, UPLOAD_TO_GOOGLEDRIVE} from "@/constants/routes";
+import {CREATE_MEDIA_POST, EDIT_MEDIA_POST, UPLOAD_TO_GOOGLEDRIVE} from "@/constants/routes";
 
 
 const MediaPostYouTubeScreen = () => {
@@ -14,7 +14,7 @@ const MediaPostYouTubeScreen = () => {
             <Text style={styles.title}>MediaPostYouTubeScreen</Text>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
             <EditScreenInfo path="app/(tabs)/index.tsx"/>
-            <Link href={CREATE_MEDIA_POST2} push asChild>
+            <Link href={CREATE_MEDIA_POST} push asChild>
                 <Button title={"create/mediapost"}/>
             </Link>
 
@@ -29,7 +29,7 @@ const MediaPostYouTubeScreen = () => {
             </Link>
             <Link href={{
                 pathname: "../edit/mediapost/[guid]",
-                params: {guid: 2}
+                params: {mediaPostGUID: 2}
             }} push asChild>
                 <Button title={"EDIT_MEDIA_POST 2"}/>
             </Link>
@@ -39,7 +39,7 @@ const MediaPostYouTubeScreen = () => {
                         router.push(
                             {
                                 pathname: EDIT_MEDIA_POST,
-                                params: {guid: 333}
+                                params: {mediaPostGUID: 333}
                             }
                         );
                     }}
@@ -48,8 +48,8 @@ const MediaPostYouTubeScreen = () => {
             <Button title={"EDIT_MEDIA_POST 4 navigate"}
                     onPress={() => {
                         navigation.navigate(
-                            "edit/mediapost/[guid]",
-                            {guid: 444}
+                            "edit/mediapost/[mediaPostGUID]",
+                            {mediaPostGUID: 444}
                         );
                     }}
             />

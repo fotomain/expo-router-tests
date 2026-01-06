@@ -3,7 +3,7 @@ import {Button, StyleSheet} from 'react-native';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import {Text, View} from '@/components/Themed';
 import {Link} from "expo-router";
-import {CREATE_MEDIA_POST2} from "@/constants/routes";
+import {CREATE_MEDIA_POST} from "@/constants/routes";
 
 
 const MediaPostWebPageScreen = () => {
@@ -12,7 +12,7 @@ const MediaPostWebPageScreen = () => {
             <Text style={styles.title}>New YouTube Post Screen</Text>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
             <EditScreenInfo path="app/(tabs)/index.tsx"/>
-            <Link href={CREATE_MEDIA_POST2} push asChild>
+            <Link href={CREATE_MEDIA_POST} push asChild>
                 <Button title={"create/mediapost"}/>
             </Link>
 

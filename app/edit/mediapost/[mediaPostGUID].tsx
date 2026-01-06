@@ -10,7 +10,7 @@ export function EdiMediaPostScreen() {
     return (
         <View style={styles.container}>
 
-            <Text>Edit mediaPost {params?.guid}</Text>
+            <Text>Edit mediaPost {params?.mediaPostGUID}</Text>
             <View style={styles.separator}/>
 
             <Button title={"Back"} onPress={() => navigation.goBack()}/>
