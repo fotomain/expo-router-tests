@@ -34,13 +34,22 @@ const MediaPostYouTubeScreen = () => {
                 <Button title={"EDIT_MEDIA_POST 2"}/>
             </Link>
 
-            <Button title={"EDIT_MEDIA_POST 3"}
+            <Button title={"EDIT_MEDIA_POST 3 push"}
                     onPress={() => {
                         router.push(
                             {
                                 pathname: EDIT_MEDIA_POST,
                                 params: {guid: 333}
                             }
+                        );
+                    }}
+            />
+
+            <Button title={"EDIT_MEDIA_POST 4 navigate"}
+                    onPress={() => {
+                        navigation.navigate(
+                            "edit/mediapost/[guid]",
+                            {guid: 444}
                         );
                     }}
             />
