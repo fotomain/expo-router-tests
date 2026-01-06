@@ -9,7 +9,7 @@ export default function HomeIndexLayout() {
         <View>
             <Text>HomeIndexLayout</Text>
             <Link href='./home' push asChild>
-                <Button title={"Go Home"} />
+                <Button title={"Go Home-RETURN STILL LAYOUT"} />
             </Link>
             <Link href='./(tabs)' push asChild>
                 <Button title={"Go Tabs"} />

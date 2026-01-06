@@ -30,7 +30,7 @@ const CustomHeader = () => {
             case ('mediapost'===currentRoute && 'create'===prevRoute):
                 return 'New Media Post';
             default:
-                return 'App1';
+                return currentRoute+'-app7';
         }
     };
 
