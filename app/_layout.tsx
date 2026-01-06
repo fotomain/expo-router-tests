@@ -7,7 +7,8 @@ import React, {useEffect} from 'react';
 import 'react-native-reanimated';
 
 import {useColorScheme} from '@/components/useColorScheme';
-import CustomHeader from "@/components/CustomHeader";
+import CustomHeader from "@/router/CustomHeader";
+import {EDIT_MEDIA_POST} from "@/router/routes";
 
 export {
     // Catch any errors thrown by the Layout component.
@@ -57,7 +58,9 @@ function RootLayoutNav() {
                 }}
             >
                 <Stack.Screen name="index" options={{headerShown: false}}/>
-                <Stack.Screen name="/create/mediapost" options={{headerShown: false}}/>
+                <Stack.Screen name={EDIT_MEDIA_POST} options={{headerShown: false}}/>
+                <Stack.Screen name={'/mi/edit/mediapoint/[mediaPostGUID]'} options={{headerShown: false}}/>
+
                 {/*<Stack.Screen name="(tabs)/index" options={{ headerShown: false }} />*/}
                 {/*<Stack.Screen name="(home)" options={{ headerShown: false }} />*/}
                 <Stack.Screen name="modal" options={{presentation: 'modal'}}/>

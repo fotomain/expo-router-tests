@@ -1,10 +1,8 @@
-import {Button, StyleSheet} from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
-import {Text, View} from '@/components/Themed';
+import {Text, View} from "@/components/Themed";
+import EditScreenInfo from "@/components/EditScreenInfo";
 import {Link} from "expo-router";
-import {CREATE_MEDIA_POST} from "@/constants/routes";
-
+import {CREATE_MEDIA_POST} from "@/router/routes";
+import {Button, StyleSheet} from "react-native";
 
 export function CreateMediaPostAbstractScreen() {
     return (

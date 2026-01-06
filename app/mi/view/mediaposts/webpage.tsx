@@ -3,26 +3,26 @@ import {Button, StyleSheet} from 'react-native';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import {Text, View} from '@/components/Themed';
 import {Link} from "expo-router";
-import {CREATE_MEDIA_POST} from "@/constants/routes";
+import {CREATE_MEDIA_POST} from "@/router/routes";
 
 
-const MediaPostGoogleDriveScreen = () => {
+const MediaPostWebPageScreen = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>googledrive Screen</Text>
+            <Text style={styles.title}>New YouTube Post Screen</Text>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
             <EditScreenInfo path="app/(tabs)/index.tsx"/>
             <Link href={CREATE_MEDIA_POST} push asChild>
-                <Button title={"create/mediapost"}/>
+                <Button title={"CREATE_MEDIA_POST 555"}/>
             </Link>
 
         </View>
     )
 }
 
-export default function MediaPostGoogleDriveRoute() {
+export default function WebPageRoute() {
     return (
-        <MediaPostGoogleDriveScreen/>
+        <MediaPostWebPageScreen/>
     );
 }
 

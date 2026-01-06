@@ -6,6 +6,7 @@ https://developer.android.com/reference/android/Manifest.permission
 expo start --web
 
 taskkill /f /im node.exe
+npm cache clean --force
 
 # ████████████ error
 
@@ -211,7 +212,6 @@ discuss.
 
 📰 Make our Editor-in-chief happy
 by [reading the React Native Newsletter](https://reactnativenewsletter.com/).
-
 
 echo "# expo-router-tests" >> README.md
 git init
