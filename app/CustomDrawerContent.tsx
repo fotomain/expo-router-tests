@@ -3,7 +3,8 @@ import {useRouter} from 'expo-router';
 import {Text, View} from 'react-native';
 import {VIEW_MEDIA_POSTS} from "@/router/routes";
 
-export default function CustomDrawerContent(props: any) {
+export default function CustomDrawerContent
+(props: any) {
     const router = useRouter();
     return (
         <DrawerContentScrollView {...props}>
