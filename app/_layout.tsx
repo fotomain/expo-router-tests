@@ -1,75 +1,70 @@
-// app/(drawer)/_layout.tsx
-// import {Drawer} from 'expo-router/drawer';
-// import {DrawerToggleButton} from '@react-navigation/drawer';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import {DarkTheme, DefaultTheme, ThemeProvider} from '@react-navigation/native';
+import {useFonts} from 'expo-font';
+import {Stack} from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import React, {useEffect} from 'react';
+import 'react-native-reanimated';
 
-import React, {useState} from "react";
+import {useColorScheme} from '@/components/useColorScheme';
+import CustomHeader from "@/router/CustomHeader";
+import {EDIT_MEDIA_POST} from "@/router/routes";
 
-// import {Button} from '@react-navigation/elements';
-import {Drawer} from 'react-native-drawer-layout';
-import {Button, Text} from "react-native";
-import {useNavigation} from "expo-router";
-import MyStack from "@/app/MyStack";
+export {
+    // Catch any errors thrown by the Layout component.
+    ErrorBoundary,
+} from 'expo-router';
 
-//DOC https://reactnavigation.org/docs/8.x/drawer-layout/
+export const unstable_settings = {
+    // Ensure that reloading on `/modal` keeps a back button present.
+    initialRouteName: '(tabs)',
+};
 
-export default function Layout() {
-    const navigation: any = useNavigation();
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
 
-    const [open, setOpen] = useState<boolean>(true)
+export default function RootLayout() {
+    const [loaded, error] = useFonts({
+        SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+        ...FontAwesome.font,
+    });
 
+    // Expo Router uses Error Boundaries to catch errors in the navigation tree.
+    useEffect(() => {
+        if (error) throw error;
+    }, [error]);
+
+    useEffect(() => {
+        if (loaded) {
+            SplashScreen.hideAsync();
+        }
+    }, [loaded]);
+
+    if (!loaded) {
+        return null;
+    }
+
+    return <RootLayoutNav/>;
+}
+
+function RootLayoutNav() {
+    const colorScheme = useColorScheme();
 
     return (
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <Stack
+                screenOptions={{
+                    header: () => <CustomHeader/>,
+                }}
+            >
+                <Stack.Screen name="index" options={{headerShown: false}}/>
+                <Stack.Screen name={EDIT_MEDIA_POST} options={{headerShown: false}}/>
+                <Stack.Screen name={'/mi/edit/mediapoint/[mediaPostGUID]'} options={{headerShown: false}}/>
 
-        <Drawer
-            open={open}
-            onOpen={() => setOpen(true)}
-            onClose={() => setOpen(false)}
-            renderDrawerContent={() => {
-                return <Text>Drawer content</Text>;
-            }}
-        >
-            <Button
-                onPress={() => setOpen((prevOpen) => !prevOpen)}
-                title={`${open ? 'Close' : 'Open'} drawer`}
-            />
-
-            <MyStack/>
-
-        </Drawer>
-
-    )
-
-    // return (
-    //     <Drawer
-    //
-    //         // open={open as boolean}
-    //         drawerContent={(props) => <CustomDrawerContent {...props} />}
-    //         screenOptions={{
-    //             headerShown: true,
-    //             // 1. Custom App Bar Styling
-    //             headerStyle: {backgroundColor: '#6200ee'},
-    //             headerTintColor: '#fff',
-    //
-    //             // 2. Custom Drawer Icon (replaces default hamburger)
-    //             headerLeft: () => {
-    //                 // return <Pressable onPress={() => {
-    //                 //     navigation.dispatch(DrawerActions.openDrawer());
-    //                 // }}>
-    //                 //     <Text style={{color: "#fff"}}>XXXX</Text>
-    //                 // </Pressable>
-    //                 return (
-    //                     <DrawerToggleButton
-    //                         tintColor="#fff"
-    //
-    //                         // Or use a completely custom icon:
-    //                         // children={<Ionicons name="menu-outline" size={28} color="white" />}
-    //                     />
-    //                 )
-    //             },
-    //         }}
-    //     >
-    //         <Drawer.Screen name="index" options={{title: 'Home'}}/>
-    //     </Drawer>
-    //
-    // );
+                {/*<Stack.Screen name="(tabs)/index" options={{ headerShown: false }} />*/}
+                {/*<Stack.Screen name="(home)" options={{ headerShown: false }} />*/}
+                <Stack.Screen name="modal" options={{presentation: 'modal'}}/>
+            </Stack>
+        </ThemeProvider>
+    );
 }

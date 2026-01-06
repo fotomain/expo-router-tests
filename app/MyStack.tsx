@@ -1,11 +1,12 @@
 import {Stack} from "expo-router";
-import CustomHeader from "@/router/CustomHeader";
 import {EDIT_MEDIA_POST} from "@/router/routes";
-import React from "react";
-import Animated, {interpolate, useAnimatedStyle} from "react-native-reanimated";
-import {useDrawerProgress} from "react-native-drawer-layout";
 
-const MyStack = () => {
+import {interpolate, useAnimatedStyle} from "react-native-reanimated";
+import {useDrawerProgress} from "react-native-drawer-layout";
+import {StyleSheet} from "react-native";
+import CustomHeader from "@/router/CustomHeader";
+
+const MyStack = (props: any) => {
     const progress: any = useDrawerProgress();
     const animatedStyle = useAnimatedStyle(() => {
         return {
@@ -18,22 +19,40 @@ const MyStack = () => {
             ],
         };
     });
-    return <Animated.View style={animatedStyle}>
-        <Stack
-            screenOptions={{
-                header: () => <CustomHeader/>,
-            }}
-        >
-            <Stack.Screen name="index" options={{headerShown: false}}/>
-            <Stack.Screen name={EDIT_MEDIA_POST} options={{headerShown: false}}/>
-            <Stack.Screen name={'/mi/edit/mediapoint/[mediaPostGUID]'} options={{headerShown: false}}/>
+    return <Stack
+        screenOptions={{
+            header: () => <CustomHeader {...props}/>,
+        }}
+    >
+        <Stack.Screen name="index" options={{headerShown: false}}/>
+        <Stack.Screen name={EDIT_MEDIA_POST}
+                      options={{
+                          headerShown: false,
 
-            {/*<Stack.Screen name="(tabs)/index" options={{ headerShown: false }} />*/}
-            {/*<Stack.Screen name="(home)" options={{ headerShown: false }} />*/}
-            <Stack.Screen name="modal" options={{presentation: 'modal'}}/>
-        </Stack>
-    </Animated.View>
+                      }}/>
+        <Stack.Screen name={'/mi/edit/mediapoint/[mediaPostGUID]'} options={{headerShown: false}}/>
+
+        {/*<Stack.Screen name="(tabs)/index" options={{ headerShown: false }} />*/}
+        {/*<Stack.Screen name="(home)" options={{ headerShown: false }} />*/}
+        <Stack.Screen name="modal" options={{presentation: 'modal'}}/>
+    </Stack>
+
 
 }
 
 export default MyStack;
+
+
+const styles = StyleSheet.create({
+    headerButton: {
+        marginRight: 15,
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        backgroundColor: 'rgba(255,255,255,0.2)',
+        borderRadius: 4,
+    },
+    headerButtonText: {
+        color: '#fff',
+        fontWeight: '600',
+    },
+});

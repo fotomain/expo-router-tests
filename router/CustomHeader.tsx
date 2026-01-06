@@ -1,8 +1,9 @@
-import {StatusBar, Text, TouchableOpacity, View} from 'react-native';
+import {Button, Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation, useRouter, useSegments} from 'expo-router';
 import {Ionicons} from '@expo/vector-icons';
+import React from "react";
 
-const CustomHeader = () => {
+const CustomHeader = (props: any) => {
     const navigation = useNavigation();
     const route: any = useRouter();
 
@@ -49,7 +50,6 @@ const CustomHeader = () => {
 
     return (
         <>
-            <StatusBar barStyle="dark-content" backgroundColor="#fff"/>
             <View style={{
                 height: 60,
                 flexDirection: 'row',
@@ -58,9 +58,16 @@ const CustomHeader = () => {
                 paddingHorizontal: 16,
                 borderBottomWidth: 1,
                 borderBottomColor: '#e5e5e5',
-                backgroundColor: '#fff',
+                backgroundColor: 'blue',
+                // backgroundColor: '#fff',
             }}>
-                <View style={{flexDirection: 'row', alignItems: 'center', flex: 1}}>
+                <View style={{flexDirection: 'row', flex: 1}}>
+
+                    {!canGoBack ? (<Button
+                        onPress={() => props.setOpen((prevOpen: any) => !prevOpen)}
+                        title={`${props.open ? 'Close' : 'Open'} drawer`}
+                    />) : (<></>)}
+
                     {canGoBack ? (
                         <TouchableOpacity
                             onPress={() => navigation.goBack()}
@@ -72,7 +79,12 @@ const CustomHeader = () => {
                         <View style={{marginRight: 16}}>
                             <Ionicons name="logo-react" size={24} color="#007AFF"/>
                         </View>
-                    )}
+                        // <Button
+                        //     onPress={() => props.setOpen((prevOpen: any) => !prevOpen)}
+                        //     title={`${props.open ? 'Close' : 'Open'} drawer`}
+                        // />
+                    )
+                    }
 
                     <Text style={{
                         fontSize: 20,
