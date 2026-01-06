@@ -3,10 +3,8 @@ import {Button, StyleSheet} from 'react-native';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import {Text, View} from '@/components/Themed';
 import {Link} from "expo-router";
+import {CREATE_MEDIA_POST2} from "@/constants/routes";
 
-export const CREATE_MEDIA_POST1 = '../create/mediapost'
-export const CREATE_MEDIA_POST2 = '../../create/mediapost'
-export const UPLOAD_TO_GOOGLEDRIVE = '../../upload/googledrive'
 
 export default function TabOneScreen() {
     return (
@@ -18,10 +16,6 @@ export default function TabOneScreen() {
                 <Button title={"create/mediapost"}/>
             </Link>
 
-            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"/>
-            <Link href={UPLOAD_TO_GOOGLEDRIVE} push asChild>
-                <Button title={"upload/googledrive"}/>
-            </Link>
 
         </View>
     );
