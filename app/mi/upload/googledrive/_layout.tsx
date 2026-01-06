@@ -1,7 +1,7 @@
 import {Stack} from "expo-router";
 
 export default function UploadToGoogleDriveLayout() {
-    const systemState: any = {enableUpload: true}
+    const systemState: any = {enableUpload: false}
     return (
         <Stack>
             <Stack.Protected guard={systemState.enableUpload}>
