@@ -1,70 +1,30 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import {DarkTheme, DefaultTheme, ThemeProvider} from '@react-navigation/native';
-import {useFonts} from 'expo-font';
-import {Stack} from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import React, {useEffect} from 'react';
-import 'react-native-reanimated';
+// app/(drawer)/_layout.tsx
+import {Drawer} from 'expo-router/drawer';
+import {DrawerToggleButton} from '@react-navigation/drawer';
+import CustomDrawerContent from "@/app/CustomDrawerContent";
 
-import {useColorScheme} from '@/components/useColorScheme';
-import CustomHeader from "@/router/CustomHeader";
-import {EDIT_MEDIA_POST} from "@/router/routes";
 
-export {
-    // Catch any errors thrown by the Layout component.
-    ErrorBoundary,
-} from 'expo-router';
-
-export const unstable_settings = {
-    // Ensure that reloading on `/modal` keeps a back button present.
-    initialRouteName: '(tabs)',
-};
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-    const [loaded, error] = useFonts({
-        SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-        ...FontAwesome.font,
-    });
-
-    // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-    useEffect(() => {
-        if (error) throw error;
-    }, [error]);
-
-    useEffect(() => {
-        if (loaded) {
-            SplashScreen.hideAsync();
-        }
-    }, [loaded]);
-
-    if (!loaded) {
-        return null;
-    }
-
-    return <RootLayoutNav/>;
-}
-
-function RootLayoutNav() {
-    const colorScheme = useColorScheme();
-
+export default function Layout() {
     return (
-        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <Stack
-                screenOptions={{
-                    header: () => <CustomHeader/>,
-                }}
-            >
-                <Stack.Screen name="index" options={{headerShown: false}}/>
-                <Stack.Screen name={EDIT_MEDIA_POST} options={{headerShown: false}}/>
-                <Stack.Screen name={'/mi/edit/mediapoint/[mediaPostGUID]'} options={{headerShown: false}}/>
+        <Drawer
+            drawerContent={(props) => <CustomDrawerContent {...props} />}
+            screenOptions={{
+                headerShown: true,
+                // 1. Custom App Bar Styling
+                headerStyle: {backgroundColor: '#6200ee'},
+                headerTintColor: '#fff',
 
-                {/*<Stack.Screen name="(tabs)/index" options={{ headerShown: false }} />*/}
-                {/*<Stack.Screen name="(home)" options={{ headerShown: false }} />*/}
-                <Stack.Screen name="modal" options={{presentation: 'modal'}}/>
-            </Stack>
-        </ThemeProvider>
+                // 2. Custom Drawer Icon (replaces default hamburger)
+                headerLeft: () => (
+                    <DrawerToggleButton
+                        tintColor="#fff"
+                        // Or use a completely custom icon:
+                        // children={<Ionicons name="menu-outline" size={28} color="white" />}
+                    />
+                ),
+            }}
+        >
+            <Drawer.Screen name="index" options={{title: 'Home'}}/>
+        </Drawer>
     );
 }
