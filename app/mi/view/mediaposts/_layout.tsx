@@ -20,6 +20,9 @@ function TabBarIcon(props: {
 export default function TabLayout() {
     const colorScheme = useColorScheme();
 
+    // const systemState: any = {enableOtherFiles: true}
+    const systemState: any = {enableOtherFiles: false}
+
     return (
         <Tabs
             screenOptions={{
@@ -62,9 +65,19 @@ export default function TabLayout() {
                 options={{
                     title: 'Google Drive',
                     // google-drive MaterialDesignIcons
-                    tabBarIcon: ({color}) => <TabBarIcon name="globe" color={color}/>,
+                    tabBarIcon: ({color}) => <TabBarIcon name="google" color={color}/>,
                 }}
             />
+            <Tabs.Protected guard={systemState.enableOtherFiles}>
+                <Tabs.Screen
+                    name="otherfiles"
+                    options={{
+                        title: 'Other Files',
+                        // google-drive MaterialDesignIcons
+                        tabBarIcon: ({color}) => <TabBarIcon name="file" color={color}/>,
+                    }}
+                />
+            </Tabs.Protected>
         </Tabs>
     );
 }
