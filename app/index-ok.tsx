@@ -7,8 +7,7 @@ export default function HomeIndexLayout() {
     const router = useRouter();
     const [open, setOpen] = useState<boolean>(true)
     return (
-        <View style={{marginTop: 100, height: '100%',}}>
-
+        <View style={{height: '100%',}}>
             {/*<View style={{backgroundColor: "red", justifyContent: "center", flexDirection: "column", height: 60}}>*/}
             {/*    <View style={{backgroundColor: "red", flexDirection: "row"}}>*/}
             {/*        <Text> HomeIndexLayout app</Text>*/}
