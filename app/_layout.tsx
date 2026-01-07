@@ -9,6 +9,17 @@ import {Drawer as Drawer2} from "react-native-drawer-layout";
 import {Drawer as DrawerPaper} from "react-native-paper";
 import {VIEW_MEDIA_POSTS} from "@/router/routes";
 
+let uxuiState: any = {}
+uxuiState.drawerRight = {
+    borderTopLeftRadius: 40,
+    borderBottomLeftRadius: 40
+}
+
+uxuiState.drawerLeft = {
+    borderTopRightRadius: 40,
+    borderBottomRightRadius: 40
+}
+
 export default function Layout() {
     const router = useRouter();
     const segments: any = useSegments();
@@ -17,7 +28,11 @@ export default function Layout() {
     return (
         <>
             <Drawer2
-                style={{borderRadius: 50}}
+                drawerStyle={{
+                    borderTopLeftRadius: uxuiState.drawerRight.borderTopLeftRadius,
+                    borderBottomLeftRadius: uxuiState.drawerRight.borderBottomLeftRadius,
+                    overflow: 'hidden', // Important for borderRadius to work with gradient
+                }}
                 open={open}
                 onOpen={() => setOpen(true)}
                 onClose={() => setOpen(false)}
@@ -73,6 +88,13 @@ export default function Layout() {
                 <Drawer
                     drawerContent={(props) => <CustomDrawerContent {...props} />}
                     screenOptions={{
+                        drawerStyle: {
+                            backgroundColor: 'pink',
+                            borderTopRightRadius: uxuiState.drawerLeft.borderTopRightRadius,
+                            borderBottomRightRadius: uxuiState.drawerLeft.borderBottomRightRadius,
+                            // OR use a single property for all corners:
+                            // borderRadius: 30,
+                        },
                         drawerPosition: 'left',
                         headerShown: true,
                         // 1. Custom App Bar Styling
