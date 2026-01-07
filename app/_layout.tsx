@@ -2,10 +2,12 @@ import {Drawer} from 'expo-router/drawer';
 import {DrawerToggleButton} from '@react-navigation/drawer';
 import CustomDrawerContent from "@/app/CustomDrawerContent";
 import {useNavigation, useRouter, useSegments} from "expo-router";
-import {Text, TouchableOpacity} from "react-native";
+import {TouchableOpacity, View} from "react-native";
 import {Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import React, {useState} from "react";
 import {Drawer as Drawer2} from "react-native-drawer-layout";
+import {Drawer as DrawerPaper} from "react-native-paper";
+import {VIEW_MEDIA_POSTS} from "@/router/routes";
 
 export default function Layout() {
     const router = useRouter();
@@ -15,11 +17,55 @@ export default function Layout() {
     return (
         <>
             <Drawer2
+                style={{borderRadius: 50}}
                 open={open}
                 onOpen={() => setOpen(true)}
                 onClose={() => setOpen(false)}
                 renderDrawerContent={() => {
-                    return <Text>Drawer menu</Text>;
+                    return (
+                        <View>
+                            <DrawerPaper.Item
+                                // icon="clipboard-flow-outline"
+                                icon={(p: any) => (
+                                    <MaterialCommunityIcons name="home" {...p} size={26}/>
+                                )}
+                                label="Home"
+                                onPress={() => {
+                                    console.log("Pressed1")
+                                    // @ts-ignore
+                                    router.push('/')
+                                }}
+                            />
+
+                            <DrawerPaper.Item
+                                // icon="clipboard-flow-outline"
+                                icon={(p: any) => (
+                                    <MaterialCommunityIcons name="clipboard-flow-outline" {...p} size={26}/>
+                                )}
+                                label="Flow"
+                                onPress={() => {
+                                    console.log("Pressed1")
+                                    // @ts-ignore
+                                    navigation.navigate("Card2")
+                                }}
+                            />
+
+                            <DrawerPaper.Item
+                                // icon="clipboard-flow-outline"
+                                icon={(p: any) => (
+                                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                                )}
+                                label="Posts"
+                                onPress={() => {
+                                    console.log("Pressed1")
+                                    // @ts-ignore
+                                    router.push(VIEW_MEDIA_POSTS)
+                                    setOpen(false)
+                                }}
+                            />
+
+
+                        </View>)
                 }}
                 drawerPosition="right"
             >
