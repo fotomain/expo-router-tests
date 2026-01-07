@@ -18,7 +18,6 @@ export default function HomeIndexLayout() {
                     return <Text>Drawer menu</Text>;
                 }}
             >
-
                 <View style={{backgroundColor: "red", justifyContent: "center", flexDirection: "column", height: 60}}>
                     <View style={{backgroundColor: "red", flexDirection: "row"}}>
                         <Ionicons name="menu" size={24} color="#007AFF"
