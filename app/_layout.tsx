@@ -1,13 +1,12 @@
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Drawer} from 'expo-router/drawer';
 import {DrawerToggleButton} from '@react-navigation/drawer';
-import CustomDrawerContent from "@/app/CustomDrawerContent";
+import DrawerLeftScreen from "@/app/DrawerLeftScreen";
 import {useNavigation, useRouter, useSegments} from "expo-router";
-import {TouchableOpacity, View} from "react-native";
 import {Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import React, {useState} from "react";
 import {Drawer as Drawer2} from "react-native-drawer-layout";
-import {Drawer as DrawerPaper} from "react-native-paper";
-import {VIEW_MEDIA_POSTS} from "@/router/routes";
+import DrawerRightScreen from "@/app/DrawerRightScreen";
 
 let uxuiState: any = {}
 uxuiState.drawerRight = {
@@ -37,56 +36,13 @@ export default function Layout() {
                 onOpen={() => setOpen(true)}
                 onClose={() => setOpen(false)}
                 renderDrawerContent={() => {
-                    return (
-                        <View>
-                            <DrawerPaper.Item
-                                // icon="clipboard-flow-outline"
-                                icon={(p: any) => (
-                                    <MaterialCommunityIcons name="home" {...p} size={26}/>
-                                )}
-                                label="Home"
-                                onPress={() => {
-                                    console.log("Pressed1")
-                                    // @ts-ignore
-                                    router.push('/')
-                                }}
-                            />
-
-                            <DrawerPaper.Item
-                                // icon="clipboard-flow-outline"
-                                icon={(p: any) => (
-                                    <MaterialCommunityIcons name="clipboard-flow-outline" {...p} size={26}/>
-                                )}
-                                label="Flow"
-                                onPress={() => {
-                                    console.log("Pressed1")
-                                    // @ts-ignore
-                                    navigation.navigate("Card2")
-                                }}
-                            />
-
-                            <DrawerPaper.Item
-                                // icon="clipboard-flow-outline"
-                                icon={(p: any) => (
-                                    <MaterialCommunityIcons name="email" {...p} size={26}/>
-                                )}
-                                label="Posts"
-                                onPress={() => {
-                                    console.log("Pressed1")
-                                    // @ts-ignore
-                                    router.push(VIEW_MEDIA_POSTS)
-                                    setOpen(false)
-                                }}
-                            />
-
-
-                        </View>)
+                    return (<DrawerRightScreen setOpen={setOpen}/>)
                 }}
                 drawerPosition="right"
             >
 
                 <Drawer
-                    drawerContent={(props) => <CustomDrawerContent {...props} />}
+                    drawerContent={(props) => <DrawerLeftScreen {...props} />}
                     screenOptions={{
                         drawerStyle: {
                             backgroundColor: 'pink',
@@ -101,7 +57,33 @@ export default function Layout() {
                         headerStyle: {backgroundColor: '#6200ee'},
                         headerTintColor: '#fff',
 
-                        // 2. Custom Drawer Icon (replaces default hamburger)
+                        headerLeft: (p: any) => {
+                            // console.log("p1 router.canGoBack", router.canGoBack())
+                            // console.log("p1 segments ", segments)
+                            // console.log("p1 segments.length ", segments.length)
+                            // console.log("p1 router", router)
+                            if (router.canGoBack()) {
+                                return (<TouchableOpacity
+                                    onPress={() => router.back()}
+                                    style={{paddingLeft: 16, paddingRight: 16,}}
+                                >
+                                    <Ionicons name="arrow-back" size={24} color="red"/>
+
+                                </TouchableOpacity>)
+                            }
+
+                            // return <MaterialCommunityIcons name="menu" size={24} style={{marginLeft: 16}}/>
+
+                            return (
+                                <View style={(!router.canGoBack()) ? {} : styles.rotatedButton}>
+                                    <DrawerToggleButton
+                                        tintColor="#fff"
+                                        // Or use a completely custom icon:
+                                        // children={<Ionicons name="menu-outline" size={28} color="white" />}
+                                    />
+                                </View>
+                            )
+                        },
                         headerRight: (p: any) => {
 
                             return (<TouchableOpacity
@@ -113,31 +95,9 @@ export default function Layout() {
                                 }}
                                 style={{paddingLeft: 16, paddingRight: 16,}}
                             >
-                                <MaterialCommunityIcons name="dots-vertical" size={24} color="red"/>
+                                <MaterialCommunityIcons name="dots-vertical" size={24} color="white"/>
                             </TouchableOpacity>)
 
-                        },
-                        headerLeft: (p: any) => {
-                            console.log("p1 router.canGoBack", router.canGoBack())
-                            console.log("p1 segments ", segments)
-                            console.log("p1 segments.length ", segments.length)
-                            console.log("p1 router", router)
-                            if (router.canGoBack()) {
-                                return (<TouchableOpacity
-                                    onPress={() => router.back()}
-                                    style={{paddingLeft: 16, paddingRight: 16,}}
-                                >
-                                    <Ionicons name="arrow-back" size={24} color="red"/>
-
-                                </TouchableOpacity>)
-                            }
-                            return (
-                                <DrawerToggleButton
-                                    tintColor="#fff"
-                                    // Or use a completely custom icon:
-                                    // children={<Ionicons name="menu-outline" size={28} color="white" />}
-                                />
-                            )
                         },
                     }}
                 >
@@ -147,3 +107,11 @@ export default function Layout() {
         </>
     );
 }
+
+const styles = StyleSheet.create({
+    rotatedButton: {
+        transform: [{rotate: '90deg'}],
+        marginRight: 16,
+    },
+
+});

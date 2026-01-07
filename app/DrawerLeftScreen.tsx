@@ -6,7 +6,7 @@ import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 import {Drawer as DrawerPaper,} from "react-native-paper"
 
-export default function CustomDrawerContent
+export default function DrawerLeftScreen
 (props: any) {
     const router = useRouter();
     return (
