@@ -1,4 +1,4 @@
-import {Button, Text, View} from "react-native";
+import {Button, View} from "react-native";
 import {Link, useRouter} from "expo-router";
 import React, {useState} from "react";
 import {CREATE_MEDIA_POST, VIEW_MEDIA_POSTS} from "@/router/routes";
@@ -8,11 +8,11 @@ export default function HomeIndexLayout() {
     const [open, setOpen] = useState<boolean>(true)
     return (
         <View style={{height: '100%',}}>
-            <View style={{backgroundColor: "red", justifyContent: "center", flexDirection: "column", height: 60}}>
-                <View style={{backgroundColor: "red", flexDirection: "row"}}>
-                    <Text> HomeIndexLayout app</Text>
-                </View>
-            </View>
+            {/*<View style={{backgroundColor: "red", justifyContent: "center", flexDirection: "column", height: 60}}>*/}
+            {/*    <View style={{backgroundColor: "red", flexDirection: "row"}}>*/}
+            {/*        <Text> HomeIndexLayout app</Text>*/}
+            {/*    </View>*/}
+            {/*</View>*/}
 
             <Link href={CREATE_MEDIA_POST} push asChild>
                 <Button title={`CREATE_MEDIA_POST from home 111 ${CREATE_MEDIA_POST}`}/>
