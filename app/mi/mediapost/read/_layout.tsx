@@ -1,6 +1,5 @@
 //ICONS cloud_upload
 
-import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import {Link, Tabs} from 'expo-router';
 import {Pressable} from 'react-native';
@@ -9,6 +8,7 @@ import Colors from '@/constants/Colors';
 import {useColorScheme} from '@/components/useColorScheme';
 import {useClientOnlyValue} from '@/components/useClientOnlyValue';
 import CustomHeader from "@/router/CustomHeader";
+import {routerGlobals} from "@/router/routerGlobals";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -17,6 +17,9 @@ function TabBarIcon(props: {
 }) {
     return <FontAwesome size={28} style={{marginBottom: -3}} {...props} />;
 }
+
+// const showInnerNavigation = false
+
 
 export default function TabLayout() {
     const colorScheme = useColorScheme();
@@ -33,7 +36,7 @@ export default function TabLayout() {
                 // to prevent a hydration error in React Navigation v6.
 
                 headerShown: useClientOnlyValue(false, true),
-                header: () => <CustomHeader/>,
+                header: () => (!routerGlobals.showInnerNavigation) ? <></> : <CustomHeader/>,
             }}>
             <Tabs.Screen
                 name="index"

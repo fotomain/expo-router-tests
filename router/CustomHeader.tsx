@@ -2,6 +2,7 @@ import {Button, Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation, useRouter, useSegments} from 'expo-router';
 import {Ionicons} from '@expo/vector-icons';
 import React from "react";
+import {routerGlobals} from "@/router/routerGlobals";
 
 const CustomHeader = (props: any) => {
     const navigation = useNavigation();
@@ -20,14 +21,20 @@ const CustomHeader = (props: any) => {
     }
 
     console.log("=== route prevRoute2", prevRoute2)
+
+    const is = (p: string) => {
+        const ret = segments.find((el) => el === p)
+        if (ret !== undefined) return true
+        return false
+    }
+
+    console.log("=== segments find - ", is("read"))
     console.log("=== route prevRoute", prevRoute)
     console.log("=== route currentRoute1", currentRoute)
 
     // Map route names to display titles
     const getTitle = () => {
         switch (true) {
-            case 'mediaposts' === currentRoute:
-                return 'Video'; // 1st Tab = mediaposts = YouTube
             case 'webpage' === currentRoute:
                 return 'Web Page';
             case 'googledrive' === currentRoute:
@@ -40,6 +47,8 @@ const CustomHeader = (props: any) => {
                 return 'New Media Post';
             case ('[guid]' === currentRoute && 'mediapost' === prevRoute && 'edit' === prevRoute2):
                 return 'Edit Media Post';
+            case is("read") && is("mediapost"):
+                return 'Video'; // 1st Tab = mediaposts = YouTube
             default:
                 return currentRoute + '-app7';
         }
@@ -58,7 +67,7 @@ const CustomHeader = (props: any) => {
                 paddingHorizontal: 16,
                 borderBottomWidth: 1,
                 borderBottomColor: '#e5e5e5',
-                backgroundColor: 'blue',
+                // backgroundColor: 'blue',
                 // backgroundColor: '#fff',
             }}>
                 <View style={{flexDirection: 'row', flex: 1}}>
@@ -73,7 +82,7 @@ const CustomHeader = (props: any) => {
                             onPress={() => navigation.goBack()}
                             style={{marginRight: 16}}
                         >
-                            <Ionicons name="arrow-back" size={24} color="#000"/>
+                            <Ionicons name="arrow-back" size={24} color={routerGlobals.navigateTabsIconColor}/>
                         </TouchableOpacity>
                     ) : (
                         <View style={{marginRight: 16}}>

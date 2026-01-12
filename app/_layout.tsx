@@ -7,17 +7,7 @@ import {Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import React, {useState} from "react";
 import {Drawer as Drawer2} from "react-native-drawer-layout";
 import DrawerRightScreen from "@/app/DrawerRightScreen";
-
-let uxuiState: any = {}
-uxuiState.drawerRight = {
-    borderTopLeftRadius: 40,
-    borderBottomLeftRadius: 40
-}
-
-uxuiState.drawerLeft = {
-    borderTopRightRadius: 40,
-    borderBottomRightRadius: 40
-}
+import {routerGlobals} from "@/router/routerGlobals";
 
 export default function Layout() {
     const router = useRouter();
@@ -28,8 +18,8 @@ export default function Layout() {
         <>
             <Drawer2
                 drawerStyle={{
-                    borderTopLeftRadius: uxuiState.drawerRight.borderTopLeftRadius,
-                    borderBottomLeftRadius: uxuiState.drawerRight.borderBottomLeftRadius,
+                    borderTopLeftRadius: routerGlobals.drawerRight.borderTopLeftRadius,
+                    borderBottomLeftRadius: routerGlobals.drawerRight.borderBottomLeftRadius,
                     overflow: 'hidden', // Important for borderRadius to work with gradient
                 }}
                 open={open}
@@ -38,24 +28,24 @@ export default function Layout() {
                 renderDrawerContent={() => {
                     return (<DrawerRightScreen setOpen={setOpen}/>)
                 }}
-                drawerPosition="right"
+                drawerPosition={routerGlobals.drawerRight.position}
             >
-
                 <Drawer
                     drawerContent={(props) => <DrawerLeftScreen {...props} />}
                     screenOptions={{
                         drawerStyle: {
                             backgroundColor: 'pink',
-                            borderTopRightRadius: uxuiState.drawerLeft.borderTopRightRadius,
-                            borderBottomRightRadius: uxuiState.drawerLeft.borderBottomRightRadius,
+                            borderTopRightRadius: routerGlobals.drawerLeft.borderTopRightRadius,
+                            borderBottomRightRadius: routerGlobals.drawerLeft.borderBottomRightRadius,
                             // OR use a single property for all corners:
                             // borderRadius: 30,
                         },
-                        drawerPosition: 'left',
+                        drawerPosition: routerGlobals.drawerLeft.position,
                         headerShown: true,
                         // 1. Custom App Bar Styling
                         headerStyle: {backgroundColor: '#6200ee'},
                         headerTintColor: '#fff',
+
 
                         headerLeft: (p: any) => {
                             // console.log("p1 router.canGoBack", router.canGoBack())
@@ -67,7 +57,7 @@ export default function Layout() {
                                     onPress={() => router.back()}
                                     style={{paddingLeft: 16, paddingRight: 16,}}
                                 >
-                                    <Ionicons name="arrow-back" size={24} color="red"/>
+                                    <Ionicons name="arrow-back" size={24} color={routerGlobals.navigateMainIconColor}/>
 
                                 </TouchableOpacity>)
                             }
@@ -77,7 +67,7 @@ export default function Layout() {
                             return (
                                 <View style={(!router.canGoBack()) ? {} : styles.rotatedButton}>
                                     <DrawerToggleButton
-                                        tintColor="#fff"
+                                        tintColor={routerGlobals.hamburgerColor}
                                         // Or use a completely custom icon:
                                         // children={<Ionicons name="menu-outline" size={28} color="white" />}
                                     />
@@ -89,10 +79,12 @@ export default function Layout() {
                             return (
                                 <View style={{flexDirection: 'row'}}>
                                     <TouchableOpacity style={{marginLeft: 20}}>
-                                        <Ionicons name="search-outline" size={24} color="white"/>
+                                        <Ionicons name="search-outline" size={24}
+                                                  color={routerGlobals.navigateIconsColor}/>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={{marginLeft: 20}}>
-                                        <Ionicons name="notifications-outline" size={24} color="white"/>
+                                        <Ionicons name="notifications-outline" size={24}
+                                                  color={routerGlobals.navigateIconsColor}/>
                                     </TouchableOpacity>
                                     <TouchableOpacity
                                         onPress={() => {
@@ -112,6 +104,9 @@ export default function Layout() {
                     }}
                 >
                     <Drawer.Screen name="index" options={{title: 'Home'}}/>
+                    <Drawer.Protected guard={true}>
+                        <Drawer.Screen name="mi/mediapost/read" options={{title: 'Posts Flow'}}/>
+                    </Drawer.Protected>
                 </Drawer>
             </Drawer2>
         </>
