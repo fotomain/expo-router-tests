@@ -1,7 +1,7 @@
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {useRouter} from 'expo-router';
 import {Text, View} from 'react-native';
-import {VIEW_MEDIA_POSTS} from "@/router/routes";
+import {READ_MEDIA_POSTS} from "@/router/routes";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 import {Drawer as DrawerPaper,} from "react-native-paper"
@@ -38,7 +38,7 @@ export default function DrawerLeftScreen
                 onPress={() => {
                     console.log("Pressed1")
                     // @ts-ignore
-                    router.push(VIEW_MEDIA_POSTS)
+                    router.push(READ_MEDIA_POSTS)
                 }}
             />
 

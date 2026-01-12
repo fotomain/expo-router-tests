@@ -86,17 +86,27 @@ export default function Layout() {
                         },
                         headerRight: (p: any) => {
 
-                            return (<TouchableOpacity
-                                onPress={() => {
-                                    setOpen((prevOpen) => !prevOpen)
-                                    // Alert.alert("headerRight", "!!!")
-                                    // window.alert("headerRight")
-                                    // router.back()
-                                }}
-                                style={{paddingLeft: 16, paddingRight: 16,}}
-                            >
-                                <MaterialCommunityIcons name="dots-vertical" size={24} color="white"/>
-                            </TouchableOpacity>)
+                            return (
+                                <View style={{flexDirection: 'row'}}>
+                                    <TouchableOpacity style={{marginLeft: 20}}>
+                                        <Ionicons name="search-outline" size={24} color="white"/>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{marginLeft: 20}}>
+                                        <Ionicons name="notifications-outline" size={24} color="white"/>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            setOpen((prevOpen) => !prevOpen)
+                                            // Alert.alert("headerRight", "!!!")
+                                            // window.alert("headerRight")
+                                            // router.back()
+                                        }}
+                                        style={{paddingLeft: 16, paddingRight: 16,}}
+                                    >
+                                        <MaterialCommunityIcons name="dots-vertical" size={24} color="white"/>
+                                    </TouchableOpacity>
+                                </View>
+                            )
 
                         },
                     }}

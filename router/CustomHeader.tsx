@@ -95,14 +95,6 @@ const CustomHeader = (props: any) => {
                     </Text>
                 </View>
 
-                <View style={{flexDirection: 'row'}}>
-                    <TouchableOpacity style={{marginLeft: 20}}>
-                        <Ionicons name="notifications-outline" size={24} color="#000"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{marginLeft: 20}}>
-                        <Ionicons name="search-outline" size={24} color="#000"/>
-                    </TouchableOpacity>
-                </View>
             </View>
         </>
     );

@@ -1,7 +1,7 @@
 import {Button, View} from "react-native";
 import {Link, useRouter} from "expo-router";
 import React, {useState} from "react";
-import {CREATE_MEDIA_POST, VIEW_MEDIA_POSTS} from "@/router/routes";
+import {CREATE_MEDIA_POST, READ_MEDIA_POSTS} from "@/router/routes";
 
 export default function HomeIndexLayout() {
     const router = useRouter();
@@ -28,8 +28,8 @@ export default function HomeIndexLayout() {
                     }}
             />
             {/*level 1 -> becouse home is in /home */}
-            <Link href={{pathname: VIEW_MEDIA_POSTS}} push asChild>
-                <Button title={"VIEW_MEDIA_POSTS HOME"}/>
+            <Link href={{pathname: READ_MEDIA_POSTS}} push asChild>
+                <Button title={"READ_MEDIA_POSTS HOME"}/>
             </Link>
         </View>
     )
