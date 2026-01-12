@@ -1,4 +1,5 @@
 export const routerGlobals: any = {
+
     hamburgerColor: 'white',
     navigateIconsColor: 'white',
     navigateMainIconColor: 'white',
@@ -14,4 +15,5 @@ export const routerGlobals: any = {
         borderTopRightRadius: 0,
         borderBottomRightRadius: 0
     }
+
 }
