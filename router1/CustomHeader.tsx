@@ -1,4 +1,4 @@
-import {Button, Text, TouchableOpacity, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import {useNavigation, useRouter, useSegments} from 'expo-router';
 import {Ionicons} from '@expo/vector-icons';
 import React from "react";
@@ -78,12 +78,12 @@ const CustomHeader = (props: any) => {
                     />) : (<></>)}
 
                     {canGoBack ? (
-                        <TouchableOpacity
+                        <Pressable
                             onPress={() => navigation.goBack()}
                             style={{marginRight: 16}}
                         >
                             <Ionicons name="arrow-back" size={24} color={routerGlobals.navigateTabsIconColor}/>
-                        </TouchableOpacity>
+                        </Pressable>
                     ) : (
                         <View style={{marginRight: 16}}>
                             <Ionicons name="logo-react" size={24} color="#007AFF"/>
