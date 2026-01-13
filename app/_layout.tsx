@@ -2,7 +2,7 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Drawer} from 'expo-router/drawer';
 import {DrawerToggleButton} from '@react-navigation/drawer';
 import DrawerLeftScreen from "@/router1/DrawerLeftScreen";
-import {useNavigation, useRouter, useSegments} from "expo-router";
+import {Stack, useNavigation, useRouter, useSegments} from "expo-router";
 import {Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import React, {useState} from "react";
 import {Drawer as Drawer2} from "react-native-drawer-layout";
@@ -108,6 +108,16 @@ export default function Layout() {
                     <Drawer.Protected guard={false}>
                         <Drawer.Screen name={READ_MEDIA_POSTS} options={{title: 'Posts Flow'}}/>
                     </Drawer.Protected>
+                    <Stack.Screen
+                        name="modal"
+                        options={{
+                            headerShown: false,
+                            // presentation: 'transparentModal',
+                            presentation: 'modal',
+                            // animation: 'fade_from_bottom',
+                            animationDuration: 1000
+                        }}
+                    />
                 </Drawer>
             </Drawer2>
         </>

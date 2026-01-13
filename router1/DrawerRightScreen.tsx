@@ -40,6 +40,7 @@ export default function DrawerRightScreen(props: any) {
             title: 'Dlelete Account',
             icon: 'trash-can-outline',
             runRouterPush: () => {
+
                 router.push({
                     pathname: DELETE_USER,
                     params: {
@@ -47,6 +48,14 @@ export default function DrawerRightScreen(props: any) {
                         entityData: JSON.stringify({deleteAutomaticaly: true, email: "ss@ss.lv"})
                     } as any
                 })
+
+                // router.push({
+                //     pathname: '/modal',
+                //     params: {
+                //         entityName: "userAccount",
+                //         entityData: JSON.stringify({deleteAutomaticaly: true, email: "ss@ss.lv"})
+                //     } as any
+                // })
             },
             IconElement: MaterialCommunityIcons
         },

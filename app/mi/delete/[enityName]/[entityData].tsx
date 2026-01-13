@@ -1,17 +1,31 @@
 import {Text} from "@/components/Themed";
 import {StyleSheet, View} from "react-native";
 import {useLocalSearchParams} from "expo-router/build/hooks";
+import {useRouter} from "expo-router";
 
 const DeleteMediaPostAbstractRoute = (props: any) => {
+
+
     return <View style={styles.container}>
         <Text style={styles.title}>DELETE</Text>
         <Text>{JSON.stringify(props)}</Text>
     </View>
 }
 
+
 export default function DeleteMediaPostLayout() {
-    const params = useLocalSearchParams()
+    const params: any = useLocalSearchParams()
     console.log("params delete", params)
+    const router = useRouter();
+
+
+    if (params?.entityData) {
+        const entityData = JSON.parse(params?.entityData)
+        if (entityData.deleteAutomaticaly) {
+            router.push({pathname: 'modal', params: {...params}} as any)
+        }
+    }
+
     return (<DeleteMediaPostAbstractRoute {...params}/>)
 
 }
