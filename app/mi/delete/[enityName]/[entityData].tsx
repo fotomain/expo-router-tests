@@ -11,6 +11,7 @@ const DeleteMediaPostAbstractRoute = (props: any) => {
 
 export default function DeleteMediaPostLayout() {
     const params = useLocalSearchParams()
+    console.log("params delete", params)
     return (<DeleteMediaPostAbstractRoute {...params}/>)
 
 }

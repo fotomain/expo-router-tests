@@ -6,7 +6,7 @@ import {Pressable} from 'react-native';
 
 import Colors from '@/constants/Colors';
 import {useColorScheme} from '@/components/useColorScheme';
-import {useClientOnlyValue} from '@/router1/useClientOnlyValue';
+import {useClientOnlyValue} from '@/router1/lib/useClientOnlyValue';
 import CustomHeader from "@/router1/CustomHeader";
 import {routerGlobals} from "@/router1/routerGlobals";
 
@@ -25,7 +25,7 @@ export default function TabLayout() {
     const colorScheme = useColorScheme();
 
     // const systemState: any = {enableOtherFiles: true}
-    const systemState: any = {enableOtherFiles: false}
+    const systemState: any = {enableOtherFiles: true}
 
     return (
         <Tabs

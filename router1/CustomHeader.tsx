@@ -45,7 +45,7 @@ const CustomHeader = (props: any) => {
                 return 'Files';
             case ('mediapost' === currentRoute && 'create' === prevRoute):
                 return 'New Media Post';
-            case ('[guid]' === currentRoute && 'mediapost' === prevRoute && 'edit' === prevRoute2):
+            case ('[guid]' === currentRoute && 'mediapost' === prevRoute && 'update' === prevRoute2):
                 return 'Edit Media Post';
             case is("read") && is("mediapost"):
                 return 'Video'; // 1st Tab = mediaposts = YouTube

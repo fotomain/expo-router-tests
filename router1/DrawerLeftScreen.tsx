@@ -24,7 +24,7 @@ export default function DrawerLeftScreen
                 onPress={() => {
                     console.log("Pressed1")
                     // @ts-ignore
-                    navigation.navigate("Card2")
+                    router.push(READ_MEDIA_POSTS)
                 }}
             />
 

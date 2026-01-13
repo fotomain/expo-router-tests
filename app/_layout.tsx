@@ -1,13 +1,14 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Drawer} from 'expo-router/drawer';
 import {DrawerToggleButton} from '@react-navigation/drawer';
-import DrawerLeftScreen from "@/app/DrawerLeftScreen";
+import DrawerLeftScreen from "@/router1/DrawerLeftScreen";
 import {useNavigation, useRouter, useSegments} from "expo-router";
 import {Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import React, {useState} from "react";
 import {Drawer as Drawer2} from "react-native-drawer-layout";
-import DrawerRightScreen from "@/app/DrawerRightScreen";
+import DrawerRightScreen from "@/router1/DrawerRightScreen";
 import {routerGlobals} from "@/router1/routerGlobals";
+import {READ_MEDIA_POSTS} from "@/router1/routes";
 
 export default function Layout() {
     const router = useRouter();
@@ -104,8 +105,8 @@ export default function Layout() {
                     }}
                 >
                     <Drawer.Screen name="index" options={{title: 'Home'}}/>
-                    <Drawer.Protected guard={true}>
-                        <Drawer.Screen name="mi/mediapost/read" options={{title: 'Posts Flow'}}/>
+                    <Drawer.Protected guard={false}>
+                        <Drawer.Screen name={READ_MEDIA_POSTS} options={{title: 'Posts Flow'}}/>
                     </Drawer.Protected>
                 </Drawer>
             </Drawer2>

@@ -4,7 +4,7 @@ import React from "react";
 import IoniCons from "react-native-vector-icons/Ionicons";
 import {Menu} from "react-native-paper";
 import {AntDesign, MaterialCommunityIcons} from "@expo/vector-icons";
-import {READ_MEDIA_POSTS} from "@/router1/routes";
+import {DELETE_USER, READ_MEDIA_POSTS} from "@/router1/routes";
 
 export default function DrawerRightScreen(props: any) {
     const router = useRouter();
@@ -32,6 +32,22 @@ export default function DrawerRightScreen(props: any) {
             title: 'Flow',
             icon: 'clipboard-flow-outline',
             gotoRoute: READ_MEDIA_POSTS,
+            IconElement: MaterialCommunityIcons
+        },
+        {id: '201-2', title: 'divider'},
+        {
+            id: '201-3',
+            title: 'Dlelete Account',
+            icon: 'trash-can-outline',
+            runRouterPush: () => {
+                router.push({
+                    pathname: DELETE_USER,
+                    params: {
+                        entityName: "userAccount",
+                        entityData: JSON.stringify({deleteAutomaticaly: true, email: "ss@ss.lv"})
+                    } as any
+                })
+            },
             IconElement: MaterialCommunityIcons
         },
         // {id: '15', title: 'Notifications', icon: '🔔'},
@@ -65,7 +81,13 @@ export default function DrawerRightScreen(props: any) {
 
             <Menu.Item
                 onPress={() => {
-                    router.push({pathname: item?.gotoRoute})
+                    if (item?.gotoRoute) {
+                        router.push({pathname: item?.gotoRoute})
+                    }
+                    if (item?.runRouterPush) {
+                        item.runRouterPush()
+                    }
+
                     props.setOpen(false);
                 }}
                 leadingIcon={(p: any) => {
