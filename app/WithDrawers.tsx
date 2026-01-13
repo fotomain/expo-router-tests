@@ -1,4 +1,4 @@
-import {Pressable, StyleSheet, View} from 'react-native';
+import {LogBox, Pressable, StyleSheet, View} from 'react-native';
 import {useNavigation, useRouter, useSegments} from "expo-router";
 
 import {Drawer as Drawer2} from "react-native-drawer-layout";
@@ -8,6 +8,10 @@ import DrawerLeftScreen from "@/router1/DrawerLeftScreen";
 import {DrawerToggleButton} from "@react-navigation/drawer";
 import {useState} from "react";
 import DrawerRightScreen from "@/router1/DrawerRightScreen";
+
+LogBox.ignoreLogs([
+    ' /props.pointerEvents is deprecated. Use style.pointerEvents/',
+]);
 
 export default function WithDrawers(props: any) {
     const router = useRouter();
@@ -32,7 +36,7 @@ export default function WithDrawers(props: any) {
             drawerPosition={routerGlobals.drawerRight.position}
         >
             <props.Drawer
-                drawerContent={(props: any) => <DrawerLeftScreen {...props} />}
+                drawerContent={(props: any) => <DrawerLeftScreen/>}
                 screenOptions={{
                     drawerStyle: {
                         backgroundColor: routerGlobals.drawerLeft.backgroundColor,

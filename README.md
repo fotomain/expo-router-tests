@@ -10,7 +10,9 @@ npm cache clean --force
 
 # ████████████ error props.pointerEvents is deprecated. Use style.pointerEvents
 
+NOT USE !!!!!!!!!! DrawerPaper.Item
 ============== OLD
+GO C:\Users\localadmin\WebstormProjects\expo-router-tests\node_modules\react-native-web\dist\exports\View\index.js
 supportedProps.style = [styles.view$raw, hasTextAncestor && styles.inline, props.style];
 ============== NEW
 const pointerEvents = supportedProps.pointerEvents;

@@ -1,8 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {LogBox, StyleSheet} from 'react-native';
 import {Drawer} from 'expo-router/drawer';
-import {useNavigation, useRouter, useSegments} from "expo-router";
-import React, {useState} from "react";
+import {Stack, useNavigation, useRouter, useSegments} from "expo-router";
+import React, {useEffect, useState} from "react";
 import WithDrawers from "@/app/WithDrawers";
+import {READ_MEDIA_POSTS} from "@/router1/routes";
+
 
 export default function Layout() {
     const router = useRouter();
@@ -11,27 +13,33 @@ export default function Layout() {
     const [open, setOpen] = useState<boolean>(false)
 
 
+    useEffect(() => {
+        // Suppress warnings
+        LogBox.ignoreLogs([
+            '/props.pointerEvents is deprecated. Use style.pointerEvents/',
+            // Add other warnings
+        ]);
+    }, []);
     // return (<View><Text>0000</Text></View>)
 
     return (
 
         <WithDrawers Drawer={Drawer}>
-            {/*<Stack/>*/}
             <Drawer.Screen name="index" options={{title: 'Home'}}/>
             {/*<Drawer.Screen name={READ_MEDIA_POSTS} options={{title: 'Posts Flow'}}/>*/}
-            {/*<Drawer.Protected guard={true}>*/}
-            {/*    <Drawer.Screen name={READ_MEDIA_POSTS} options={{title: 'Posts Flow'}}/>*/}
-            {/*</Drawer.Protected>*/}
-            {/*<Stack.Screen*/}
-            {/*    name="modal"*/}
-            {/*    options={{*/}
-            {/*        headerShown: false,*/}
-            {/*        // presentation: 'transparentModal',*/}
-            {/*        presentation: 'modal',*/}
-            {/*        // animation: 'fade_from_bottom',*/}
-            {/*        animationDuration: 1000*/}
-            {/*    }}*/}
-            {/*/>*/}
+            <Drawer.Protected guard={true}>
+                <Drawer.Screen name={READ_MEDIA_POSTS} options={{title: 'Posts Flow'}}/>
+            </Drawer.Protected>
+            <Stack.Screen
+                name="modal"
+                options={{
+                    headerShown: false,
+                    // presentation: 'transparentModal',
+                    presentation: 'modal',
+                    // animation: 'fade_from_bottom',
+                    animationDuration: 1000
+                }}
+            />
         </WithDrawers>
 
     );
