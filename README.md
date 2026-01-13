@@ -8,6 +8,15 @@ expo start --web
 taskkill /f /im node.exe
 npm cache clean --force
 
+# ████████████ error props.pointerEvents is deprecated. Use style.pointerEvents
+
+============== OLD
+supportedProps.style = [styles.view$raw, hasTextAncestor && styles.inline, props.style];
+============== NEW
+const pointerEvents = supportedProps.pointerEvents;
+delete supportedProps.pointerEvents;
+supportedProps.style = [{ pointerEvents }, styles.view$raw, hasTextAncestor && styles.inline, props.style];
+
 # ████████████ start Drawer
 
 npx expo install @react-navigation/drawer react-native-reanimated react-native-worklets
