@@ -1,7 +1,7 @@
 import {Button, View} from "react-native";
 import {Link, useRouter} from "expo-router";
 import React, {useState} from "react";
-import {CREATE_MEDIA_POST, READ_MEDIA_POSTS} from "@/router/routes";
+import {CREATE_MEDIA_POST, READ_MEDIA_POSTS} from "@/router1/routes";
 
 export default function HomeIndexLayout() {
     const router = useRouter();

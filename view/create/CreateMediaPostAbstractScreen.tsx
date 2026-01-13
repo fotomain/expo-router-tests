@@ -1,7 +1,7 @@
 import {Text, View} from "@/components/Themed";
 import EditScreenInfo from "@/components/EditScreenInfo";
 import {Link} from "expo-router";
-import {CREATE_MEDIA_POST} from "@/router/routes";
+import {CREATE_MEDIA_POST} from "@/router1/routes";
 import {Button, StyleSheet} from "react-native";
 
 export function CreateMediaPostAbstractScreen() {

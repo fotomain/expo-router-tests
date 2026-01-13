@@ -2,7 +2,7 @@ import {Button, Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation, useRouter, useSegments} from 'expo-router';
 import {Ionicons} from '@expo/vector-icons';
 import React from "react";
-import {routerGlobals} from "@/router/routerGlobals";
+import {routerGlobals} from "@/router1/routerGlobals";
 
 const CustomHeader = (props: any) => {
     const navigation = useNavigation();

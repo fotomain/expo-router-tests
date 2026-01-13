@@ -3,7 +3,7 @@ import {Button, StyleSheet} from 'react-native';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import {Text, View} from '@/components/Themed';
 import {Link, useNavigation, useRouter} from "expo-router";
-import {CREATE_MEDIA_POST, DELETE_MEDIA_POST, EDIT_MEDIA_POST, UPLOAD_TO_GOOGLEDRIVE} from "@/router/routes";
+import {CREATE_MEDIA_POST, DELETE_MEDIA_POST, EDIT_MEDIA_POST, UPLOAD_TO_GOOGLEDRIVE} from "@/router1/routes";
 
 
 const MediaPostYouTubeScreen = () => {

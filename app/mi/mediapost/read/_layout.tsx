@@ -6,9 +6,9 @@ import {Pressable} from 'react-native';
 
 import Colors from '@/constants/Colors';
 import {useColorScheme} from '@/components/useColorScheme';
-import {useClientOnlyValue} from '@/components/useClientOnlyValue';
-import CustomHeader from "@/router/CustomHeader";
-import {routerGlobals} from "@/router/routerGlobals";
+import {useClientOnlyValue} from '@/router1/useClientOnlyValue';
+import CustomHeader from "@/router1/CustomHeader";
+import {routerGlobals} from "@/router1/routerGlobals";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -32,9 +32,8 @@ export default function TabLayout() {
             backBehavior='order'
             screenOptions={{
                 tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-                // Disable the static render of the header on web
-                // to prevent a hydration error in React Navigation v6.
-
+                //████ Disable the static render of the header on web
+                //████ to prevent a hydration error in React Navigation v6.
                 headerShown: useClientOnlyValue(false, true),
                 header: () => (!routerGlobals.showInnerNavigation) ? <></> : <CustomHeader/>,
             }}>

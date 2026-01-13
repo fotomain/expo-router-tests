@@ -4,13 +4,19 @@ import React from "react";
 import IoniCons from "react-native-vector-icons/Ionicons";
 import {Menu} from "react-native-paper";
 import {AntDesign, MaterialCommunityIcons} from "@expo/vector-icons";
-
+import {READ_MEDIA_POSTS} from "@/router1/routes";
 
 export default function DrawerRightScreen(props: any) {
     const router = useRouter();
 
     const rightMenuItems = [
-        {id: '01-2', title: 'Make Photo', icon: 'camera-outline', IconElement: IoniCons},
+        {
+            id: '01-2',
+            title: 'Make Photo',
+            icon: 'camera-outline',
+            gotoRoute: READ_MEDIA_POSTS,
+            IconElement: IoniCons
+        },
         {id: '01-3', title: 'Record Video', icon: 'videocam-outline', IconElement: IoniCons},
         {id: '01-4', title: 'Record Audio', icon: 'musical-notes-outline', IconElement: IoniCons},
         {id: '01-5', title: 'Paste URL', icon: 'copy'},
@@ -20,6 +26,14 @@ export default function DrawerRightScreen(props: any) {
         {id: '80', title: 'Upload Txt', icon: 'file-text'},
         {id: '90', title: 'Upload Image', icon: 'file-image'},
         {id: '100', title: 'New Web Page', icon: 'link'},
+        {id: '200', title: 'divider'},
+        {
+            id: '201-1',
+            title: 'Flow',
+            icon: 'clipboard-flow-outline',
+            gotoRoute: READ_MEDIA_POSTS,
+            IconElement: MaterialCommunityIcons
+        },
         // {id: '15', title: 'Notifications', icon: '🔔'},
         // {id: '35', title: 'Notifications', icon: '🔔'},
         // {id: '45', title: 'Notifications', icon: '🔔'},
@@ -39,23 +53,35 @@ export default function DrawerRightScreen(props: any) {
     //     </TouchableOpacity>
     // );
 
-    const renderMenuItem = ({item}: { item: any }) => (
-        <Menu.Item
-            onPress={() => {
-            }}
-            leadingIcon={(p: any) => {
+    const renderMenuItem = ({item}: { item: any }) => {
 
-                if (item?.IconElement) {
-                    return <item.IconElement name={item.icon} {...p}/>
-                } else {
-                    return <AntDesign name={item.icon} {...p} />
+        if (item.title === "divider") {
+            return <Text>----------------</Text>
+        }
+
+        const router: any = useRouter()
+
+        return (
+
+            <Menu.Item
+                onPress={() => {
+                    router.push({pathname: item?.gotoRoute})
+                    props.setOpen(false);
+                }}
+                leadingIcon={(p: any) => {
+
+                    if (item?.IconElement) {
+                        return <item.IconElement name={item.icon} {...p}/>
+                    } else {
+                        return <AntDesign name={item.icon} {...p} />
+                    }
+
                 }
-
-            }
-            }
-            title={item.title}
-        />
-    );
+                }
+                title={item.title}
+            />
+        )
+    }
 
 
     return (

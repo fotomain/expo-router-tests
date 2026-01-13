@@ -7,7 +7,7 @@ import {Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import React, {useState} from "react";
 import {Drawer as Drawer2} from "react-native-drawer-layout";
 import DrawerRightScreen from "@/app/DrawerRightScreen";
-import {routerGlobals} from "@/router/routerGlobals";
+import {routerGlobals} from "@/router1/routerGlobals";
 
 export default function Layout() {
     const router = useRouter();
@@ -48,10 +48,10 @@ export default function Layout() {
 
 
                         headerLeft: (p: any) => {
-                            // console.log("p1 router.canGoBack", router.canGoBack())
+                            // console.log("p1 router1.canGoBack", router1.canGoBack())
                             // console.log("p1 segments ", segments)
                             // console.log("p1 segments.length ", segments.length)
-                            // console.log("p1 router", router)
+                            // console.log("p1 router1", router1)
                             if (router.canGoBack()) {
                                 return (<TouchableOpacity
                                     onPress={() => router.back()}
@@ -91,7 +91,7 @@ export default function Layout() {
                                             setOpen((prevOpen) => !prevOpen)
                                             // Alert.alert("headerRight", "!!!")
                                             // window.alert("headerRight")
-                                            // router.back()
+                                            // router1.back()
                                         }}
                                         style={{paddingLeft: 16, paddingRight: 16,}}
                                     >
