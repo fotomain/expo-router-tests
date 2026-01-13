@@ -5,12 +5,17 @@ import {READ_MEDIA_POSTS} from "@/router1/routes";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 import {Drawer as DrawerPaper,} from "react-native-paper"
+import {routerGlobals} from "@/router1/routerGlobals";
 
 export default function DrawerLeftScreen
 (props: any) {
     const router = useRouter();
+    // pointerEvents={'none'}
     return (
-        <DrawerContentScrollView {...props}>
+        <DrawerContentScrollView {...props} pointerEvents={'none'}
+                                 style={{backgroundColor: "pink"}}
+                                 contentContainerStyle={{padding: routerGlobals.drawerLeft.paddingAll}}
+        >
             <View style={{padding: 20, backgroundColor: '#f4f4f4'}}>
                 <Text style={{fontWeight: 'bold'}}>User Profile</Text>
             </View>

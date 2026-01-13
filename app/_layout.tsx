@@ -1,13 +1,8 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {Drawer} from 'expo-router/drawer';
-import {DrawerToggleButton} from '@react-navigation/drawer';
-import DrawerLeftScreen from "@/router1/DrawerLeftScreen";
 import {Stack, useNavigation, useRouter, useSegments} from "expo-router";
-import {Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import React, {useState} from "react";
-import {Drawer as Drawer2} from "react-native-drawer-layout";
-import DrawerRightScreen from "@/router1/DrawerRightScreen";
-import {routerGlobals} from "@/router1/routerGlobals";
+import WithDrawers from "@/app/WithDrawers";
 import {READ_MEDIA_POSTS} from "@/router1/routes";
 
 export default function Layout() {
@@ -15,112 +10,30 @@ export default function Layout() {
     const segments: any = useSegments();
     const navigation = useNavigation();
     const [open, setOpen] = useState<boolean>(false)
+
+
+    // return (<View><Text>0000</Text></View>)
+
     return (
-        <>
-            <Drawer2
-                drawerStyle={{
-                    borderTopLeftRadius: routerGlobals.drawerRight.borderTopLeftRadius,
-                    borderBottomLeftRadius: routerGlobals.drawerRight.borderBottomLeftRadius,
-                    overflow: 'hidden', // Important for borderRadius to work with gradient
+
+        <WithDrawers Drawer={Drawer}>
+            <Drawer.Screen name="index" options={{title: 'Home'}}/>
+            {/*<Drawer.Screen name={READ_MEDIA_POSTS} options={{title: 'Posts Flow'}}/>*/}
+            <Drawer.Protected guard={true}>
+                <Drawer.Screen name={READ_MEDIA_POSTS} options={{title: 'Posts Flow'}}/>
+            </Drawer.Protected>
+            <Stack.Screen
+                name="modal"
+                options={{
+                    headerShown: false,
+                    // presentation: 'transparentModal',
+                    presentation: 'modal',
+                    // animation: 'fade_from_bottom',
+                    animationDuration: 1000
                 }}
-                open={open}
-                onOpen={() => setOpen(true)}
-                onClose={() => setOpen(false)}
-                renderDrawerContent={() => {
-                    return (<DrawerRightScreen setOpen={setOpen}/>)
-                }}
-                drawerPosition={routerGlobals.drawerRight.position}
-            >
-                <Drawer
-                    drawerContent={(props) => <DrawerLeftScreen {...props} />}
-                    screenOptions={{
-                        drawerStyle: {
-                            backgroundColor: 'pink',
-                            borderTopRightRadius: routerGlobals.drawerLeft.borderTopRightRadius,
-                            borderBottomRightRadius: routerGlobals.drawerLeft.borderBottomRightRadius,
-                            // OR use a single property for all corners:
-                            // borderRadius: 30,
-                        },
-                        drawerPosition: routerGlobals.drawerLeft.position,
-                        headerShown: true,
-                        // 1. Custom App Bar Styling
-                        headerStyle: {backgroundColor: '#6200ee'},
-                        headerTintColor: '#fff',
+            />
+        </WithDrawers>
 
-
-                        headerLeft: (p: any) => {
-                            // console.log("p1 router1.canGoBack", router1.canGoBack())
-                            // console.log("p1 segments ", segments)
-                            // console.log("p1 segments.length ", segments.length)
-                            // console.log("p1 router1", router1)
-                            if (router.canGoBack()) {
-                                return (<TouchableOpacity
-                                    onPress={() => router.back()}
-                                    style={{paddingLeft: 16, paddingRight: 16,}}
-                                >
-                                    <Ionicons name="arrow-back" size={24} color={routerGlobals.navigateMainIconColor}/>
-
-                                </TouchableOpacity>)
-                            }
-
-                            // return <MaterialCommunityIcons name="menu" size={24} style={{marginLeft: 16}}/>
-
-                            return (
-                                <View style={(!router.canGoBack()) ? {} : styles.rotatedButton}>
-                                    <DrawerToggleButton
-                                        tintColor={routerGlobals.hamburgerColor}
-                                        // Or use a completely custom icon:
-                                        // children={<Ionicons name="menu-outline" size={28} color="white" />}
-                                    />
-                                </View>
-                            )
-                        },
-                        headerRight: (p: any) => {
-
-                            return (
-                                <View style={{flexDirection: 'row'}}>
-                                    <TouchableOpacity style={{marginLeft: 20}}>
-                                        <Ionicons name="search-outline" size={24}
-                                                  color={routerGlobals.navigateIconsColor}/>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{marginLeft: 20}}>
-                                        <Ionicons name="notifications-outline" size={24}
-                                                  color={routerGlobals.navigateIconsColor}/>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity
-                                        onPress={() => {
-                                            setOpen((prevOpen) => !prevOpen)
-                                            // Alert.alert("headerRight", "!!!")
-                                            // window.alert("headerRight")
-                                            // router1.back()
-                                        }}
-                                        style={{paddingLeft: 16, paddingRight: 16,}}
-                                    >
-                                        <MaterialCommunityIcons name="dots-vertical" size={24} color="white"/>
-                                    </TouchableOpacity>
-                                </View>
-                            )
-
-                        },
-                    }}
-                >
-                    <Drawer.Screen name="index" options={{title: 'Home'}}/>
-                    <Drawer.Protected guard={false}>
-                        <Drawer.Screen name={READ_MEDIA_POSTS} options={{title: 'Posts Flow'}}/>
-                    </Drawer.Protected>
-                    <Stack.Screen
-                        name="modal"
-                        options={{
-                            headerShown: false,
-                            // presentation: 'transparentModal',
-                            presentation: 'modal',
-                            // animation: 'fade_from_bottom',
-                            animationDuration: 1000
-                        }}
-                    />
-                </Drawer>
-            </Drawer2>
-        </>
     );
 }
 
@@ -131,3 +44,7 @@ const styles = StyleSheet.create({
     },
 
 });
+
+//
+// <View><Text>0000</Text></View>
+// <View><Text>0000</Text></View>

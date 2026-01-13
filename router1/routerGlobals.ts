@@ -13,7 +13,9 @@ export const routerGlobals: any = {
     drawerLeft: {
         position: 'left',
         borderTopRightRadius: 0,
-        borderBottomRightRadius: 0
+        borderBottomRightRadius: 0,
+        backgroundColor: "red",
+        paddingAll: 0
     }
 
 }
