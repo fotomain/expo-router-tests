@@ -1,6 +1,5 @@
-import {DrawerContentScrollView} from '@react-navigation/drawer';
 import {useRouter} from 'expo-router';
-import {LogBox, Text, View} from 'react-native';
+import {LogBox, ScrollView, Text, View} from 'react-native';
 import {routerGlobals} from "@/router1/routerGlobals";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {Menu} from "react-native-paper";
@@ -13,8 +12,9 @@ export default function DrawerLeftScreen
 (props: any) {
     const router = useRouter();
     // pointerEvents={'none'}
+    // DrawerContentScrollView
     return (
-        <DrawerContentScrollView
+        <ScrollView
             style={{backgroundColor: "pink"}}
             contentContainerStyle={{padding: routerGlobals.drawerLeft.paddingAll}}
         >
@@ -49,7 +49,436 @@ export default function DrawerLeftScreen
                 }}
             />
 
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
 
-        </DrawerContentScrollView>
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+            <Menu.Item
+                // icon="clipboard-flow-outline"
+                leadingIcon={(p: any) => (
+                    <MaterialCommunityIcons name="email" {...p} size={26}/>
+                )}
+                title="Posts"
+                onPress={() => {
+                    console.log("Pressed1")
+                    // @ts-ignore
+                    router.push(READ_MEDIA_POSTS)
+                }}
+            />
+
+
+        </ScrollView>
     );
 }

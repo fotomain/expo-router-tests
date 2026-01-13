@@ -1,7 +1,7 @@
-import {LogBox, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {Drawer} from 'expo-router/drawer';
 import {Stack, useNavigation, useRouter, useSegments} from "expo-router";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import WithDrawers from "@/app/WithDrawers";
 import {READ_MEDIA_POSTS} from "@/router1/routes";
 
@@ -12,14 +12,6 @@ export default function Layout() {
     const navigation = useNavigation();
     const [open, setOpen] = useState<boolean>(false)
 
-
-    useEffect(() => {
-        // Suppress warnings
-        LogBox.ignoreLogs([
-            '/props.pointerEvents is deprecated. Use style.pointerEvents/',
-            // Add other warnings
-        ]);
-    }, []);
     // return (<View><Text>0000</Text></View>)
 
     return (
